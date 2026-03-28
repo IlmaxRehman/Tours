@@ -1,11 +1,20 @@
 async function getTour(slug) {
-  const res = await fetch(`http://127.0.0.1:8000/api/tours/${slug}/`)
+  const res = await fetch(`http://127.0.0.1:8000/api/tours/${slug}/`, {
+    cache: "no-store",
+  })
+
   return res.json()
 }
 
 export default async function TourPage({ params }) {
 
-  const tour = await getTour(params.slug)
+  const { slug } = await params   // IMPORTANT FIX
+
+  const tour = await getTour(slug)
+
+  const message = `Hi, I'm interested in the ${tour.name}`
+  const whatsappLink =
+    `https://wa.me/917409970085?text=${encodeURIComponent(message)}`
 
   return (
     <div className="max-w-5xl mx-auto py-16 px-6">
@@ -24,12 +33,20 @@ export default async function TourPage({ params }) {
         {tour.price}
       </p>
 
-      <div className="mt-6">
+      <a
+        href={whatsappLink}
+        target="_blank"
+        className="inline-block mt-4 bg-green-500 text-white px-6 py-3 rounded-lg"
+      >
+        Book on WhatsApp
+      </a>
+
+      <div className="mt-8">
         <h2 className="text-2xl font-semibold mb-2">Description</h2>
         <p>{tour.description}</p>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-8">
         <h2 className="text-2xl font-semibold mb-2">Itinerary</h2>
         <p>{tour.itinerary}</p>
       </div>
