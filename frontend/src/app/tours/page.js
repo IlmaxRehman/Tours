@@ -12,6 +12,7 @@ export default function ToursPage() {
       .then((res) => res.json())
       .then((data) => setTours(data))
   }, [])
+  
 
   return (
     <div className="max-w-6xl mx-auto py-16 px-6">

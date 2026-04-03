@@ -6,6 +6,21 @@ async function getTour(slug) {
   
   const tour = await res.json()
 
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: tour.name,
+    description: tour.description,
+    image: tour.hero_image,
+    offers: {
+     "@type": "Offer",
+      price: tour.price,
+      priceCurrency: "USD"
+   }
+  }
+
+  
+
   return {
     title: `${tour.name} | Trivoya Travels`,
     description: tour.description,
