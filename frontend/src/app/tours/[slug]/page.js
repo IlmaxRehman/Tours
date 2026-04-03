@@ -3,7 +3,18 @@ async function getTour(slug) {
     cache: "no-store",
   })
 
-  return res.json()
+  
+  const tour = await res.json()
+
+  return {
+    title: `${tour.name} | Trivoya Travels`,
+    description: tour.description,
+    openGraph: {
+      title: tour.name,
+      description: tour.description,
+      images: [tour.hero_image],
+    },
+  }
 }
 
 export default async function TourPage({ params }) {

@@ -12,7 +12,7 @@ export default function Footer() {
                     <h4 className="font-semibold mb-3">Quick Links</h4>
                     <ul className="space-y-2 text-sm">
                         <li><a href="/tours">Tours</a></li>
-                        <li><a href="/blog">Travel Blogt</a></li>
+                        <li><a href="/blog">Travel Blog</a></li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>

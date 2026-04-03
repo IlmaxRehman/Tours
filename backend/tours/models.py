@@ -18,5 +18,19 @@ class Tour(models.Model):
 
     created_at = models.DateTimeField(auto_created=True)
 
+class BlogPost(models.Model):
+
+    title = models.CharField(max_length=200)
+
+    slug = models.SlugField(unique=True)
+
+    content = models.TextField()
+
+    featured_image = models.URLField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    is_published = models.BooleanField(default=True)
+
     def __str__(self):
-        return self.name
+        return self.title
