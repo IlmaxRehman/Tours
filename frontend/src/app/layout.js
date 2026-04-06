@@ -22,7 +22,10 @@ export const metadata = {
     "Golden Triangle tour",
     "Agra tour packages",
     "India travel tours",
-  ]
+  ],
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
