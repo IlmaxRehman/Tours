@@ -2,6 +2,9 @@ import Hero from "@/components/Hero"
 import PopularTours from "@/components/PopularTours"
 import DestinationSection from "@/components/DestinationSection"
 import WhyChoose from "@/components/WhyChoose"
+import ReviewSection from "@/components/ReviewSection"
+import FAQSection from "@/components/FAQSection"
+
 
 
 export default function Home() {
@@ -11,6 +14,8 @@ export default function Home() {
       <PopularTours />
       <DestinationSection />
       <WhyChoose />
+      <ReviewSection />
+      <FAQSection />
     </>
   )
 }
