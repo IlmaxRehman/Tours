@@ -1,54 +1,91 @@
 export default function WhyChoose() {
   return (
-    <section className="py-20">
+    <section className="py-24 bg-white">
 
       <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-3xl font-bold text-center mb-14">
-          Why Choose Trivoya Travels
+        {/* Heading */}
+
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+          Why Choose Trivoya for Your Golden Triangle Tour
         </h2>
+
+        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-14">
+          We specialize in Taj Mahal and Golden Triangle tours with experienced
+          guides, comfortable transport and personalized travel experiences
+          across Delhi, Agra and Jaipur.
+        </p>
+
+        {/* Features Grid */}
 
         <div className="grid md:grid-cols-4 gap-10 text-center">
 
-          <div className="p-6 rounded-xl shadow-sm bg-white hover:shadow-md transition">
-            <div className="text-4xl mb-4">🌍</div>
+          {/* Guide */}
+
+          <div className="p-6 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition">
+
+            <div className="text-4xl mb-4">🧭</div>
+
             <h3 className="font-semibold mb-2">
-              Local Expert Guides
+              Licensed Local Guides
             </h3>
+
             <p className="text-gray-600 text-sm">
-              Our knowledgeable guides ensure you experience the true history
-              and culture of India.
+              Explore the Taj Mahal, Agra Fort and Jaipur palaces with
+              knowledgeable certified guides.
             </p>
+
           </div>
 
-          <div className="p-6 rounded-xl shadow-sm bg-white hover:shadow-md transition">
+          {/* Transport */}
+
+          <div className="p-6 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition">
+
             <div className="text-4xl mb-4">🚗</div>
+
             <h3 className="font-semibold mb-2">
-              Private Comfortable Transport
+              Comfortable AC Vehicles
             </h3>
+
             <p className="text-gray-600 text-sm">
-              Travel in clean, air-conditioned vehicles with professional drivers.
+              Travel safely between Delhi, Agra and Jaipur in private
+              air-conditioned vehicles with professional drivers.
             </p>
+
           </div>
 
-          <div className="p-6 rounded-xl shadow-sm bg-white hover:shadow-md transition">
-            <div className="text-4xl mb-4">📅</div>
+          {/* Sunrise */}
+
+          <div className="p-6 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition">
+
+            <div className="text-4xl mb-4">🌅</div>
+
             <h3 className="font-semibold mb-2">
-              Flexible Custom Tours
+              Sunrise Taj Mahal Access
             </h3>
+
             <p className="text-gray-600 text-sm">
-              Personalize your itinerary according to your schedule and interests.
+              Experience the Taj Mahal at sunrise — the most beautiful
+              and less crowded time to visit.
             </p>
+
           </div>
 
-          <div className="p-6 rounded-xl shadow-sm bg-white hover:shadow-md transition">
+          {/* Support */}
+
+          <div className="p-6 rounded-xl shadow-sm bg-gray-50 hover:shadow-md transition">
+
             <div className="text-4xl mb-4">💬</div>
+
             <h3 className="font-semibold mb-2">
               24/7 WhatsApp Support
             </h3>
+
             <p className="text-gray-600 text-sm">
-              Our team is always available to assist you during your journey.
+              Our travel experts are always available to help with itinerary
+              changes, questions and booking assistance.
             </p>
+
           </div>
 
         </div>
