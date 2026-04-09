@@ -9,7 +9,7 @@ export default function Hero() {
     "/images/hero/taj.jpg",
     "/images/hero/agra-fort.jpg",
     "/images/hero/delhi.jpg",
-    "/images/hero/amber-fort.jpg",
+    "/images/hero/amber.jpg"
   ]
 
   const [index, setIndex] = useState(0)
