@@ -13,25 +13,22 @@ export default function Navbar() {
     }
 
     window.addEventListener("scroll", handleScroll)
-
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
     <header
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white shadow-md"
-          : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
 
         <a href="/" className="flex items-center">
 
-          <div className="relative h-14 w-48">
+          <div className="relative h-16 w-56">
 
             <Image
               src="/images/trivoya_logo.png"
@@ -47,7 +44,11 @@ export default function Navbar() {
 
         {/* Navigation */}
 
-        <ul className="hidden md:flex gap-10 font-medium text-white md:text-white">
+        <ul
+          className={`hidden md:flex gap-10 font-medium text-lg transition ${
+            scrolled ? "text-gray-800" : "text-white"
+          }`}
+        >
 
           <li>
             <a href="/" className="hover:text-orange-500 transition">
