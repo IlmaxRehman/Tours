@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import  Tour
 from .models import BlogPost
+from .models import Booking
 
 
 class TourSerializer(serializers.ModelSerializer):
@@ -14,3 +15,8 @@ class BlogPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogPost
         fields = '__all__'
+
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = "__all__"

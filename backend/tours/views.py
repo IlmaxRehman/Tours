@@ -7,6 +7,10 @@ from .serializers import TourSerializer
 from .models import BlogPost
 from .serializers import BlogPostSerializer
 
+from .models import Booking
+from .serializers import BookingSerializer
+
+
 
 # Create your views here.
 class TourListView(generics.ListAPIView):
@@ -27,3 +31,7 @@ class BlogDetailView(generics.RetrieveAPIView):
     queryset = BlogPost.objects.filter(is_published=True)
     serializer_class = BlogPostSerializer
     lookup_field = "slug"
+
+class BookingCreateView(generics.CreateAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
