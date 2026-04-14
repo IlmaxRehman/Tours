@@ -3,38 +3,12 @@ async function getTour(slug) {
     cache: "no-store",
   })
 
-  
-  const tour = await res.json()
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    name: tour.name,
-    description: tour.description,
-    image: tour.hero_image,
-    offers: {
-     "@type": "Offer",
-      price: tour.price,
-      priceCurrency: "USD"
-   }
-  }
-
-  
-
-  return {
-    title: `${tour.name} | Trivoya Travels`,
-    description: tour.description,
-    openGraph: {
-      title: tour.name,
-      description: tour.description,
-      images: [tour.hero_image],
-    },
-  }
+  return res.json()
 }
 
 export default async function TourPage({ params }) {
 
-  const { slug } = await params   // IMPORTANT FIX
+  const { slug } = params
 
   const tour = await getTour(slug)
 
@@ -43,55 +17,110 @@ export default async function TourPage({ params }) {
     `https://wa.me/917409970085?text=${encodeURIComponent(message)}`
 
   return (
-    <div className="max-w-5xl mx-auto py-16 px-6">
+    <div className="bg-gray-50">
 
-      <img
-        src={tour.hero_image}
-        alt={tour.name}
-        className="w-full h-96 object-cover rounded-lg"
-      />
+      {/* HERO */}
 
-      <h1 className="text-4xl font-bold mt-6">{tour.name}</h1>
+      <section className="relative h-[70vh] w-full">
 
-      <p className="text-gray-500 mt-2">{tour.duration}</p>
+        <img
+          src={tour.hero_image}
+          alt={tour.name}
+          className="w-full h-full object-cover"
+        />
 
-      <p className="text-orange-600 text-xl font-semibold mt-2">
-        {tour.price}
-      </p>
-      
-      <div className="mt-8 bg-gray-50 p-6 rounded-lg">
+        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
 
-       <h2 className="text-2xl font-semibold mb-4">Tour Highlights</h2>
+          <div className="text-center text-white px-6">
 
-       <ul className="space-y-2 text-gray-700">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              {tour.name}
+            </h1>
 
-       <li>✔ Private air-conditioned car pickup</li>
-       <li>✔ Professional English speaking guide</li>
-       <li>✔ Sunrise visit to the Taj Mahal</li>
-       <li>✔ Visit Agra Fort UNESCO World Heritage Site</li>
-       <li>✔ Hotel pickup and drop-off included</li>
+            <p className="text-lg">
+              {tour.duration} • From ${tour.price}
+            </p>
 
-       </ul>
+          </div>
 
-      </div>
+        </div>
 
-      <a
-        href={whatsappLink}
-        target="_blank"
-        className="inline-block mt-4 bg-green-500 text-white px-6 py-3 rounded-lg"
-      >
-        Book on WhatsApp
-      </a>
+      </section>
 
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-2">Description</h2>
-        <p>{tour.description}</p>
-      </div>
+      {/* CONTENT */}
 
-      <div className="mt-8">
-        <h2 className="text-2xl font-semibold mb-2">Itinerary</h2>
-        <p>{tour.itinerary}</p>
-      </div>
+      <section className="max-w-5xl mx-auto px-6 py-16">
+
+        {/* Overview */}
+
+        <div className="mb-12">
+
+          <h2 className="text-2xl font-semibold mb-4">
+            Tour Overview
+          </h2>
+
+          <p className="text-gray-700 leading-relaxed">
+            {tour.description}
+          </p>
+
+        </div>
+
+        {/* Highlights */}
+
+        <div className="mb-12 bg-white p-6 rounded-xl shadow">
+
+          <h2 className="text-xl font-semibold mb-4">
+            Tour Highlights
+          </h2>
+
+          <ul className="space-y-2 text-gray-700">
+
+            <li>✔ Private air-conditioned car</li>
+            <li>✔ Professional guide</li>
+            <li>✔ Hotel pickup & drop</li>
+            <li>✔ Skip-the-line experience</li>
+
+          </ul>
+
+        </div>
+
+        {/* Itinerary */}
+
+        <div className="mb-12">
+
+          <h2 className="text-2xl font-semibold mb-4">
+            Itinerary
+          </h2>
+
+          <p className="text-gray-700 whitespace-pre-line">
+            {tour.itinerary}
+          </p>
+
+        </div>
+
+        {/* CTA */}
+
+        <div className="bg-orange-50 border border-orange-200 p-6 rounded-xl text-center">
+
+          <h3 className="text-xl font-semibold mb-3">
+            Book This Tour
+          </h3>
+
+          <p className="text-gray-600 mb-5">
+            Contact us directly on WhatsApp for best price and instant confirmation.
+          </p>
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-600 transition"
+          >
+            Chat on WhatsApp
+          </a>
+
+        </div>
+
+      </section>
 
     </div>
   )
