@@ -14,9 +14,16 @@ from .serializers import BookingSerializer
 
 # Create your views here.
 class TourListView(generics.ListAPIView):
-    queryset = Tour.objects.filter(is_active=True)
     serializer_class = TourSerializer
 
+    def get_queryset(self):
+        queryset = Tour.objects.filter(is_active=True)
+        city = self.request.query_params.get("city")
+
+        if city:
+            queryset = queryset.filter(city__iexact=city)
+
+        return queryset
 class TourDetailView(generics.RetrieveAPIView):
     queryset = Tour.objects.filter(is_active=True)
     serializer_class = TourSerializer
