@@ -21,7 +21,7 @@ class TourListView(generics.ListAPIView):
         city = self.request.query_params.get("city")
 
         if city:
-            queryset = queryset.filter(city__iexact=city)
+            queryset = queryset.filter(city__icontains=city)
 
         return queryset
 class TourDetailView(generics.RetrieveAPIView):
