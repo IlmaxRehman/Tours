@@ -1,30 +1,30 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function TourCard({ tour }) {
 
   if (!tour) return null
-  console.log("SLUG:", tour.slug)
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border group">
 
-      {/* Image */}
+      {/* IMAGE */}
 
-      <div className="relative h-56 w-full">
+      <div className="relative h-56 w-full overflow-hidden">
 
         <Image
           src={
-            tour.hero_image?.startsWith("http")
-            ? tour.hero_image
-            : "/images/placeholder.jpg"
+            tour.hero_image?.includes("http")
+              ? decodeURIComponent(tour.hero_image.replace("/media/", ""))
+              : "/images/placeholder.jpg"
           }
-          alt={(tour.name || "Tour") + " Taj Mahal tour"}
+          alt={tour.name}
           fill
           sizes="(max-width:768px) 100vw, 33vw"
-          className="object-cover"
+          className="object-cover group-hover:scale-110 transition duration-500"
         />
 
-        {/* City Badge */}
+        {/* CITY BADGE */}
 
         {tour.city && (
           <span className="absolute top-3 left-3 bg-white/90 text-xs font-semibold px-3 py-1 rounded-full shadow">
@@ -34,17 +34,17 @@ export default function TourCard({ tour }) {
 
       </div>
 
-      {/* Content */}
+      {/* CONTENT */}
 
-      <div className="p-5 flex flex-col justify-between h-50">
+      <div className="p-5 flex flex-col justify-between">
 
-        {/* Title */}
+        {/* TITLE */}
 
-        <h3 className="text-lg font-semibold mb-2 leading-snug">
-          {tour.name || "Tour Package"}
+        <h3 className="text-lg font-semibold mb-2 leading-snug group-hover:text-orange-500 transition">
+          {tour.name}
         </h3>
 
-        {/* Duration */}
+        {/* DURATION */}
 
         {tour.duration && (
           <p className="text-sm text-gray-500 mb-2">
@@ -52,30 +52,30 @@ export default function TourCard({ tour }) {
           </p>
         )}
 
-        {/* Description */}
+        {/* DESCRIPTION */}
 
         <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-          {tour.description || ""}
+          {tour.description}
         </p>
 
-        {/* Bottom */}
+        {/* FOOTER */}
 
         <div className="flex items-center justify-between mt-auto">
 
-          {/* Price */}
+          {/* PRICE */}
 
           <span className="text-orange-500 font-bold text-lg">
-            From ${tour.price}
+            From {tour.price}
           </span>
 
           {/* CTA */}
 
-          <a
+          <Link
             href={`/tours/${tour.slug}`}
             className="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-orange-600 transition"
           >
             View Tour
-          </a>
+          </Link>
 
         </div>
 
