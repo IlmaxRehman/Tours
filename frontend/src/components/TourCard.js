@@ -3,6 +3,7 @@ import Image from "next/image"
 export default function TourCard({ tour }) {
 
   if (!tour) return null
+  console.log("SLUG:", tour.slug)
 
   return (
     <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300 border">
@@ -12,7 +13,11 @@ export default function TourCard({ tour }) {
       <div className="relative h-56 w-full">
 
         <Image
-          src={tour.hero_image || "/images/placeholder.jpg"}
+          src={
+            tour.hero_image?.startsWith("http")
+            ? tour.hero_image
+            : "/images/placeholder.jpg"
+          }
           alt={(tour.name || "Tour") + " Taj Mahal tour"}
           fill
           sizes="(max-width:768px) 100vw, 33vw"
@@ -66,7 +71,7 @@ export default function TourCard({ tour }) {
           {/* CTA */}
 
           <a
-            href={`/tours/${tours.slug}`}
+            href={`/tours/${tour.slug}`}
             className="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-orange-600 transition"
           >
             View Tour
