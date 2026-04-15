@@ -1,36 +1,39 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import TourCard from "./TourCard"
 
 export default function PopularTours() {
+
+  const [tours, setTours] = useState([])
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/tours/")
+      .then(res => res.json())
+      .then(data => setTours(data.slice(0, 3))) // only 3
+  }, [])
+
   return (
 
-    <section className="max-w-6xl mx-auto px-6 py-16">
+    <section className="py-20 bg-white">
 
-      <h2 className="text-3xl font-bold mb-10 text-center">
-        Popular Taj Mahal & Golden Triangle Tours
-      </h2>
+      <div className="max-w-6xl mx-auto px-6">
 
-      <div className="grid md:grid-cols-3 gap-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
+          Popular Tours
+        </h2>
 
-        <TourCard
-          image="/images/tours/taj-tour.jpg"
-          title="Taj Mahal Sunrise Tour"
-          description="Witness the breathtaking Taj Mahal at sunrise with our expert guide."
-          price="49"
-        />
+        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
+          Discover our most booked and highly rated tour experiences across India.
+        </p>
 
-        <TourCard
-          image="/images/tours/golden-triangle.jpg"
-          title="Golden Triangle Tour"
-          description="Explore Delhi, Agra and Jaipur in our most popular multi-day tour."
-          price="199"
-        />
+        <div className="grid md:grid-cols-3 gap-8">
 
-        <TourCard
-          image="/images/tours/agra-fort.jpg"
-          title="Taj Mahal & Agra Fort Tour"
-          description="Discover Agra's historic wonders including the Taj Mahal and Agra Fort."
-          price="79"
-        />
+          {tours.map(tour => (
+            <TourCard key={tour.id} tour={tour} />
+          ))}
+
+        </div>
 
       </div>
 
