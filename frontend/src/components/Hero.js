@@ -33,7 +33,7 @@ export default function Hero() {
           alt="Golden Triangle tour India"
           fill
           priority={i === 0}
-          className={`object-cover transition-all duration-1000 ease-in-out ${
+          className={`object-cover transition-all duration-[5000ms] ease-linear ${
             i === index
               ? "opacity-100 scale-110"
               : "opacity-0 scale-100"
@@ -42,12 +42,12 @@ export default function Hero() {
       ))}
 
       {/* STRONG OVERLAY */}
-      <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/65 flex items-center justify-center">
 
         <div className="text-center text-white max-w-3xl px-6">
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
             Golden Triangle & Taj Mahal Tours
           </h1>
 
@@ -80,17 +80,17 @@ export default function Hero() {
           <div className="grid grid-cols-3 gap-6 mt-12 text-sm md:text-base">
 
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-              <p className="font-bold text-xl">10K+</p>
+              <p className="font-bold text-xl text-white">10K+</p>
               <p className="text-gray-300">Happy Travellers</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-              <p className="font-bold text-xl">4.9 ★</p>
+              <p className="font-bold text-xl text-white">4.9 ★</p>
               <p className="text-gray-300">Average Rating</p>
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-              <p className="font-bold text-xl">8+ Years</p>
+              <p className="font-bold text-xl text-white">8+ Years</p>
               <p className="text-gray-300">Tour Experience</p>
             </div>
 
